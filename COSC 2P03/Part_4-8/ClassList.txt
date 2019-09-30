@@ -1,0 +1,6 @@
+COSC 1P03
+4
+111111	John Smith
+222222	Mary Mild
+333333	Fred Flintstone
+444444	Betty Rubble

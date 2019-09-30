@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<drjava version="drjava-20140826-r5761">
+  <project autorefresh="false" build="" root="" work="">
+    <createjar file=""/>
+    <source>
+      <file active="true" name="MarkingSchemeTest.java" package="Course_Records" timestamp="07-Mar-2016 15:46:33">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="CourseStub.java" package="Course_Records" timestamp="21-Jul-2014 12:56:52">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Course.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MarkingScheme.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Student.java" package="Course_Records" timestamp="20-Mar-2014 10:10:38">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="StudentForm.java" package="Course_Records" timestamp="20-Mar-2014 10:10:38">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="StudentImpl.java" package="Course_Records" timestamp="20-Mar-2014 10:11:57">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="Work.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="WorkImpl.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MarkingSchemeImpl.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+      <file name="MarkingSchemeForm.java" package="Course_Records" timestamp="20-Mar-2014 10:10:37">
+        <select from="44" to="44"/>
+        <scroll column="0" row="0"/>
+      </file>
+    </source>
+    <included/>
+    <excluded/>
+    <collapsed/>
+    <classpath/>
+    <breakpoints/>
+    <watches/>
+    <bookmarks/>
+    <preferences/>
+  </project>
+</drjava>
