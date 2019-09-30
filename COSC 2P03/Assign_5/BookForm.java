@@ -1,0 +1,93 @@
+package Assign_5;
+
+/* StudentName: Jiachao Wu  
+ * 
+ * Student Number:5726922
+ * 
+ * Date:2016/4/4  */
+
+import BasicIO.*;
+import static BasicIO.Formats.*;
+
+
+
+public class BookForm {
+    
+    
+    private BasicForm  display;    // form for display
+    private Book     theBook;  // course being displayed
+    private ASCIIPrompter prompt;
+    private String ISBN;
+    private String Title;
+    private int num;
+    private Chapter aChapter;
+
+    
+    public BookForm ( Book aBook ) {
+        
+        display = new BasicForm("Add Chapter","Done");
+        prompt = new ASCIIPrompter();
+        theBook = aBook;
+        
+        display.addTextField("isbn","ISNB",5,10,40);
+        display.addTextField("Title","Title",6,140,40);
+        display.addTextField("chap","Chapter",6,160,40);
+        display.setEditable("chap",false);
+        display.addTextField("Pages","Pages",6,180,40);
+        display.setEditable("Pages",false);
+        display.addTextField("Cost","Cost",6,160,40);
+        display.setEditable("chap",false);
+    };  // constructor
+    
+    public boolean confirm ( ) {
+        
+        int  button;
+        
+        fillForm();
+        button = display.accept("Add Chapter","Done");
+        display.hide();
+        return button == 0;
+        
+    };  // confirm
+    
+    public int accept(){
+      int a;
+    a=display.accept();
+    return a;
+    }
+    
+    /** This method is used to display the course information for information
+      * purposes.                                                                */
+    
+    public void display ( ) {
+        
+        fillForm( );
+        display.accept("OK");
+        display.hide();
+        
+    };  // display
+    
+    
+    /** This method closes the form. It should no longer be used.               */
+    
+    public void close ( ) {
+        
+        display.close();
+        
+    };  // close
+    
+    
+    /** This method fills the form with the current course information.          */
+    
+    private void fillForm () {
+        
+        
+        display.writeString("isbn",ISBN);
+        display.writeString("Title",Title);
+        display.writeInt("chap",num);
+        display.writeInt("Pages",aChapter.getPages());
+        display.writeDouble("Cost",aChapter.calCost());
+    };  // fillForm
+    
+    
+}  // BookForm

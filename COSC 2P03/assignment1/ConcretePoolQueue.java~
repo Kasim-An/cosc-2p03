@@ -1,0 +1,317 @@
+package assignment1;
+import java.util.LinkedList;
+import java.util.List;
+
+public class ConcretePoolQueue<E> implements PoolQueue<E>{
+
+    private LinkedList<LinkedList<E>> groupsPeople = new LinkedList<LinkedList<E>>();
+    
+
+
+    public void addSingle(E item) {
+        
+        LinkedList<E> aux = new LinkedList<E>();
+        aux.add(item);
+        groupsPeople.add(aux);
+    }
+
+
+    public void addPair(E first, E second) {
+        
+        LinkedList<E> aux = new LinkedList<E>();
+        aux.add(first);
+        aux.add(second);
+        groupsPeople.add(aux);
+    }
+
+    public void addTriple(E first, E second, E third) {
+        
+        LinkedList<E> aux = new LinkedList<E>();
+        
+        aux.add(first);
+        aux.add(second);
+        aux.add(third);
+        
+        groupsPeople.add(aux);
+    }
+
+    public void addQuartet(E first, E second, E third, E fourth) {        
+        
+        LinkedList<E> aux = new LinkedList<E>();
+        
+        aux.add(first);
+        aux.add(second);
+        aux.add(third);
+        aux.add(fourth);
+        
+        groupsPeople.add(aux);
+    }
+
+
+    public E removeSingle() {      
+        
+        E returnValue = removeSingle(0);
+        if (returnValue == null)
+            throw new InsufficientElementsException();
+        
+        return returnValue;
+    }
+    
+    private E removeSingle(int subHead){
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            if ( groupsPeople.get(i).size() == 1 )
+            {
+                E returnValue = groupsPeople.get(i).get(0);
+                groupsPeople.remove(i);
+                
+                return returnValue; 
+            }
+        
+        return null;
+    }
+
+
+    public List<E> removePair() {
+        
+        List<E> returnValue = removePair(0);
+        if (returnValue == null)
+            throw new InsufficientElementsException();
+        
+        return returnValue;
+    }
+    
+    private List<E> removePair(int subHead){
+        
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 2)
+            {
+                List<E> returnValue = groupsPeople.get(i);
+                groupsPeople.remove(i);
+                
+                return returnValue; 
+            }
+            else
+                if ( groupsPeople.get(i).size() == 1)
+                {
+                    E single = removeSingle(i+1);
+                    if ( single != null )
+                    {
+                        List<E> returnValue = groupsPeople.get(i);
+                        groupsPeople.remove(i);
+                        
+                        returnValue.add(single);
+
+                        return returnValue; 
+                    }
+                }
+        
+        
+        return null;
+    }
+
+
+    public List<E> removeTriple() {
+        List<E> returnValue = removeTriple(0);
+        if (returnValue == null)
+            throw new InsufficientElementsException();
+        
+        return returnValue;
+    }
+    
+    private List<E> removeTriple(int subHead){
+        
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 3)
+            {
+                List<E> returnValue = groupsPeople.get(i);
+                groupsPeople.remove(i);
+                
+                return returnValue; 
+            }
+            else
+                if ( groupsPeople.get(i).size() == 2){
+                    E single = removeSingle(i+1);
+                    if ( single != null )
+                    {
+                        List<E> returnValue = groupsPeople.get(i);
+                        groupsPeople.remove(i);
+
+                        returnValue.add(single);
+
+                        return returnValue; 
+                    }
+                }
+                else
+                    if ( groupsPeople.get(i).size() == 1)
+                    {
+                        List<E> pair = removePair(i+1);
+                        if ( pair != null )
+                        {
+                            List<E> returnValue = groupsPeople.get(i);
+                            groupsPeople.remove(i);
+
+                            returnValue.addAll(pair);
+
+                            return returnValue; 
+                        }
+                        
+                    }
+        
+        
+        return null;
+    }
+
+  
+    public List<E> removeQuartet() {
+        List<E> returnValue = removeQuartet(0);
+        if (returnValue == null)
+            throw new InsufficientElementsException();
+        
+        return returnValue;
+    }
+    
+    public List<E> removeQuartet(int subHead) {
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 4)
+            {
+                List<E> returnValue = groupsPeople.get(i);
+                groupsPeople.remove(i);
+                
+                return returnValue; 
+            }
+            else                
+            if ( groupsPeople.get(i).size() == 3)
+            {
+                E single = removeSingle(i+1);
+                if ( single != null )
+                {
+                    List<E> returnValue = groupsPeople.get(i);
+                    groupsPeople.remove(i);
+
+                    returnValue.add(single);
+
+                    return returnValue; 
+                }                   
+
+            }
+            else
+                if ( groupsPeople.get(i).size() == 2){
+                    List<E> pair = removePair(i+1);
+                    if ( pair != null )
+                    {
+                        List<E> returnValue = groupsPeople.get(i);
+                        groupsPeople.remove(i);
+
+                        returnValue.addAll(pair);
+
+                        return returnValue; 
+                    }
+                }
+                else
+                    if ( groupsPeople.get(i).size() == 1)
+                    {
+                        List<E> triple = removeTriple(i+1);
+                        if ( triple != null )
+                        {
+                            List<E> returnValue = groupsPeople.get(i);
+                            groupsPeople.remove(i);
+
+                            returnValue.addAll(triple);
+
+                            return returnValue; 
+                        }
+                        
+                    }
+        
+        
+        return null;
+    }
+    
+    public boolean hasSingle() {    
+        return hasSingle(0);
+    }
+    
+    private boolean hasSingle(int subHead){
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            if ( groupsPeople.get(i).size() == 1 )
+                return true;
+        
+        return false;        
+    }
+
+
+    public boolean hasPair() {
+        
+        return hasPair(0);
+    }
+
+    private boolean hasPair(int subHead){
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 2)
+                return true;
+            else
+                if ( groupsPeople.get(i).size() == 1 && hasSingle(i+1))
+                    return true;                
+                
+        return false;
+    }
+
+ 
+    public boolean hasTriple() {
+        return hasTriple(0);
+    }
+    
+    private boolean hasTriple(int subHead) {
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 3)
+                return true;
+            else
+                if ( groupsPeople.get(i).size() == 2 && hasSingle(i+1))
+                    return true;                
+                else
+                    if ( groupsPeople.get(i).size() == 1 && hasPair(i+1))
+                        return true;                      
+                
+        return false;    
+    }
+    
+    public boolean hasQuartet() {
+        return hasQuartet(0);
+    }
+    
+    private boolean hasQuartet(int subHead) {
+        
+        for ( int i = subHead; i < groupsPeople.size(); ++i)
+            
+            if ( groupsPeople.get(i).size() == 4)
+                return true;
+            else
+                if ( groupsPeople.get(i).size() == 3 && hasSingle(i+1))
+                    return true;  
+                else
+                    if ( groupsPeople.get(i).size() == 2 && hasPair(i+1))
+                        return true; 
+                    else
+                        if ( groupsPeople.get(i).size() == 1 && hasTriple(i+1))
+                            return true;  
+                
+        return false;  
+    }
+    
+    public int count() {
+        return groupsPeople.size();
+    }
+    
+}

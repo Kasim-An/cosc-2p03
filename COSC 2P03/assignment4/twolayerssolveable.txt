@@ -1,0 +1,15 @@
+5
+5
+2
+
+X O O O X
+O O X O E
+X X X X X
+O O O O O
+X X X X X
+
+X X X X X
+O X X X X
+O X X X X
+O X X X O
+X X S O O

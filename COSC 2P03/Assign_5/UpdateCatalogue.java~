@@ -1,0 +1,57 @@
+package Assign_5;
+
+/* StudentName: Jiachao Wu  
+ * 
+ * Student Number:5726922
+ * 
+ * Date:2016/4/4  */
+
+import BasicIO.*;
+
+
+public class UpdateCatalogue {
+  
+  private Chapter    aChapter;
+    
+  public UpdateCatalogue ( ) {
+    
+    BinaryDataFile     bookData;     // input file for course data 
+    BinaryOutputFile   newBookData;  // output file for updated course data
+    Book               aBook;        // course being processed
+    BookForm           form;           // form for display
+    int                button;         // button pressed    
+    Chapter            aChapter;       // student being updated
+    ChapForm           cForm;
+    
+    
+    bookData = new BinaryDataFile();
+    aBook = (Book)bookData.readObject();
+    bookData.close();
+    cForm = new ChapForm(aChapter);
+    form = new BookForm(aBook);
+    if ( cForm.confirm() ) {
+      
+      for ( ; ; ) {
+        
+        button = cForm.accept("OK","Skip");
+        if ( button == 1 ) break;
+        
+        if ( cForm.add()) {
+          
+        };
+        cForm.clear("serial");
+      };
+      
+      newBookData = new BinaryOutputFile();
+      newBookData.writeObject(aBook);
+      newBookData.close();
+    };
+    form.close();
+        
+    }; // constructor
+    
+    
+    public static void main ( String[] args ) { UpdateCatalogue u = new UpdateCatalogue(); };
+    
+    
+} // UpdateCatalogue
